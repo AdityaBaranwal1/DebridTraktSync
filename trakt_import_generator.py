@@ -16,8 +16,13 @@ import time
 import os
 
 # Configuration
-REALDEBRID_API_TOKEN = "KLL4DOIIRQ3M7IISUNDXACKRHMTPYTI6SIJBBU3UYUDCWAOBJT6Q"
-TMDB_API_KEY = "96ef2142c87c8faf881969ab547b27d5"  # Get from https://www.themoviedb.org/settings/api
+try:
+    from config import REALDEBRID_API_TOKEN, TMDB_API_KEY
+except ImportError:
+    print("❌ Error: config.py not found!")
+    print("   Please copy config_template.py to config.py and add your API keys")
+    exit(1)
+
 REALDEBRID_BASE_URL = "https://api.real-debrid.com/rest/1.0"
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
@@ -279,10 +284,10 @@ def main():
     print("🎬 Trakt.tv Import Generator from Real-Debrid History")
     print("=" * 60)
     
-    # Check if TMDB API key is configured
-    if TMDB_API_KEY == "your_tmdb_api_key_here":
-        print("❌ Please configure your TMDB API key in the script")
-        print("   Get one from: https://www.themoviedb.org/settings/api")
+    # Check if API keys are configured
+    if TMDB_API_KEY == "your_tmdb_api_key_here" or REALDEBRID_API_TOKEN == "your_real_debrid_api_token_here":
+        print("❌ Please configure your API keys in config.py")
+        print("   Copy config_template.py to config.py and add your API keys")
         return
     
     # Initialize generator

@@ -13,7 +13,13 @@ from typing import List, Dict, Any
 import os
 
 # Configuration
-API_TOKEN = "KLL4DOIIRQ3M7IISUNDXACKRHMTPYTI6SIJBBU3UYUDCWAOBJT6Q"
+try:
+    from config import REALDEBRID_API_TOKEN as API_TOKEN
+except ImportError:
+    print("❌ Error: config.py not found!")
+    print("   Please copy config_template.py to config.py and add your API keys")
+    exit(1)
+
 BASE_URL = "https://api.real-debrid.com/rest/1.0"
 DOWNLOADS_ENDPOINT = f"{BASE_URL}/downloads"
 

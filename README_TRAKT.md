@@ -19,12 +19,12 @@ This script converts your Real-Debrid download history into a Trakt.tv import fi
 3. Request an API key (v3 auth)
 4. Copy your API key
 
-### 2. Configure the Script
-Edit `trakt_import_generator.py` and replace:
-```python
-TMDB_API_KEY = "your_tmdb_api_key_here"
+### 2. Configure API Keys
+```bash
+# Copy the template and add your API keys
+cp config_template.py config.py
+# Edit config.py with your actual API keys
 ```
-with your actual TMDB API key.
 
 ### 3. Install Dependencies
 ```bash
@@ -102,9 +102,9 @@ The script includes rate limiting (0.1s between API calls) to respect TMDB's API
 
 ## Troubleshooting
 
-### No TMDB API Key
-- Get a free API key from TMDB
-- Replace the placeholder in the script
+### No API Keys Configured
+- Copy `config_template.py` to `config.py`
+- Add your Real-Debrid and TMDB API keys to `config.py`
 
 ### No Results Found
 - Some filenames may be too obscure
